@@ -1,0 +1,38 @@
+.nav {
+  flex: 0.3;
+}
+
+.nav-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  gap: 20px;
+  padding-top: 80px;
+}
+
+.navIcons {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+.icon-label {
+  margin-top: 5px; 
+  font-size: 12px; /* Adjust label font size */
+  color: #c6bebe; /* Label text color */
+  text-align: center; /* Center the text */
+}
+
+/* Optional hover effect */
+.navIcons:hover {
+  transform: scale(1.2); /* Slightly enlarge icon on hover */
+  transition: transform 0.2s; /* Smooth transition */
+}
+.navItem {
+    display: flex;
+    flex-direction: column;  /* Stack icon and label vertically */
+    align-items: center;     /* Center icon and label horizontally */
+    justify-content: center; /* Center icon and label vertically */
+    margin-bottom: 20px;     /* Space between each nav item */
+  }

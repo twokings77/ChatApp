@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.Userinfo{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.avatar{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon{
+    color: red;
+}

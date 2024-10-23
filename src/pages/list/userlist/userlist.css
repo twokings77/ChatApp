@@ -1,0 +1,17 @@
+.userList{
+    /* overflow: scroll; */
+    
+}
+
+.historyAvatar{
+    position: relative;
+    display: inline-block;
+}
+
+/* .chatItem{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+
+} */

@@ -1,0 +1,12 @@
+.message{
+    
+    }
+.messageOwn{
+    margin-left: 30%;
+}
+
+@media (max-width: 1023px) {
+    .messageOwn {
+      margin-left: 20%; /* Or any other margin value you prefer */
+    }
+  }

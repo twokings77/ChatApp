@@ -1,0 +1,14 @@
+.sendButton{
+    border-left: 1px solid white;
+}
+
+.emoji {
+    position: relative;
+  }
+  
+  .picker {
+    position: fixed; /* Use fixed positioning */
+    bottom: 50px; /* Adjust to always keep it above the emoji icon */
+    right: 4%; /* Adjust the right offset, you can tweak this */
+    z-index: 999; /* Ensure it stays on top of other elements */
+  }
