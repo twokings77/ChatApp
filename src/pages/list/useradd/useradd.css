@@ -1,0 +1,14 @@
+.userAdd{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.759);
+    border-radius: 10px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: max-content;
+    height: max-content;
+    z-index: 999;
+
+}
