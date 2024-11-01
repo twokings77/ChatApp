@@ -2,19 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-.Userinfo{
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.Userinfo {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.avatar{
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.avatarAndName {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Adjust gap for better spacing */
 }
 
-.icon{
-    color: red;
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the avatar content */
+  width: 2.5rem; /* Fixed width for avatar */
+  height: 2.5rem; /* Fixed height for avatar */
+  border-radius: 50%; /* Ensure circular shape */
+}
+
+.avatar img {
+  width: 100%; /* Make the image take full width */
+  height: 100%; /* Make the image take full height */
+  object-fit: cover; /* Cover the area without distortion */
+}
+
+.placeholder {
+  width: 2.5rem; /* Match the avatar size */
+  height: 2.5rem; /* Match the avatar size */
+  background-color: #ccc; /* Optional: Set a background color for placeholder */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the content in the placeholder */
+  border-radius: 50%; /* Circular shape for the placeholder */
+}
+
+.username {
+  font-size: 1rem; /* Set a size for the username */
+  color: #000; /* Set color for visibility, adjust as needed */
+}
+
+.icons {
+  display: flex;
+  gap: 0.5rem;
 }

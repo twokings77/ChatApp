@@ -2,3 +2,11 @@
     width: 2px ;
     background-color: rgba(163, 139, 139, 0.281);
 }
+
+button{
+
+    &:disabled{
+        cursor: not-allowed;
+        background-color: rgba(117, 117, 163, 0.623);
+    }
+}
