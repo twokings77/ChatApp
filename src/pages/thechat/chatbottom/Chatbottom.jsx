@@ -19,13 +19,16 @@ const Chatbottom = () => {
   
     try {
       const timestamp = Timestamp.now();
+      const formattedTime = timestamp.toDate().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   
       const newMessage = {
         id: Date.now(),
         text: message.trim(),
         sender: currentUser.id,
-        time: timestamp.toDate().toLocaleTimeString(),
+        avatar: currentUser.avatar,
+        time: formattedTime,
         type: "text",
+        status: "delivered",
       };
   
       const chatRef = doc(db, "chats", chatId);
@@ -66,6 +69,28 @@ const Chatbottom = () => {
       sendMessage();
     }
   };
+
+  // Function to update message status to "seen"
+  const markMessageAsSeen = async () => {
+    if (!chatId) return;
+
+    try {
+      const chatRef = doc(db, "chats", chatId);
+      await updateDoc(chatRef, {
+        messages: arrayUnion({
+          id: messageId, // Replace with actual message ID
+          status: "seen", // Update status to seen
+        }),
+      });
+    } catch (error) {
+      console.error("Error marking message as seen:", error);
+    }
+  };
+
+  // Call markMessageAsSeen when the user opens the chat or views messages
+  useEffect(() => {
+    markMessageAsSeen();
+  }, [chatId]);
 
   return (
     <div className="bottom p-2">

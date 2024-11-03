@@ -61,6 +61,15 @@ const Useradd = React.forwardRef(({ onUserAdded }, ref) => {
       await setDoc(doc(userChatsRef, user.id), { chats: arrayUnion(chatDataForUser) }, { merge: true });
       await setDoc(doc(userChatsRef, currentUser.id), { chats: arrayUnion(chatDataForCurrentUser) }, { merge: true });
   
+      // New addition: Automatically add User 1 to User 2's chat list
+      const chatDataForUser2 = {
+        chatId: newChatRef.id,
+        lastMessage: "",
+        receiverId: currentUser.id, // User 1's ID
+      };
+  
+      await setDoc(doc(userChatsRef, user.id), { chats: arrayUnion(chatDataForUser2) }, { merge: true });
+  
       console.log("Successfully updated Firestore");
   
       // Notify the Userlist that a user has been added
@@ -91,15 +100,22 @@ const Useradd = React.forwardRef(({ onUserAdded }, ref) => {
       </form>
 
       {user && (
-        <div className="flex flex-col mt-4">
-          <div className="flex items-center gap-4">
+        <div className="flex flex-col mt-4 adding">
+          <div className="flex items-center gap-4 justify-between">
+
+            <div className="flex gap-2 items-center pl-4">
             <img
               src={user.avatar || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
               alt="User avatar"
-              className="w-10 rounded-full"
+              className="w-10 h-10 rounded-full"
             />
             <span>{user.username}</span>
-            <button onClick={handleAdd} className="btn btn-secondary ml-auto">
+
+            </div>
+           <div className="addbtn">
+            
+           </div>
+            <button onClick={handleAdd} className="btn btn-primary ">
               Add
             </button>
           </div>

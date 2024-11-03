@@ -54,7 +54,7 @@ const Chatcenter = () => {
         >
           {message.sender !== currentUserId && (
             <div className="chat-image avatar">
-              <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="Avatar" className="w-10 rounded-full" />
+              <img src={message.avatar || "default-avatar-url"} alt="Avatar" className="w-10 rounded-full" />
             </div>
           )}
           <div className="chat-bubble flex flex-col">
