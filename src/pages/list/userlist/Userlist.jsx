@@ -20,7 +20,6 @@ const Userlist = () => {
   const { currentUser } = useUserStore();
   const { chatId, changeChat } = useChatStore();
   const userAddRef = useRef(null);
-  const [sortedMessages, setSortedMessages] = useState([]);
 
   useEffect(() => {
     if (!currentUser?.id) return;
@@ -111,12 +110,6 @@ const Userlist = () => {
     chat.user.username.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  useEffect(() => {
-    // Sort messages by timestamp or ID in descending order
-    const sorted = [...filteredUsers].sort((a, b) => b.updatedAt - a.updatedAt); // Assuming filteredUsers have a updatedAt property
-    setSortedMessages(sorted);
-  }, [filteredUsers]);
-
   return (
     <div className="userList flex-1 flex-col overflow-scroll p-2">
       <div className="searchBar mb-8 flex gap-6 items-center">
@@ -149,7 +142,7 @@ const Userlist = () => {
         </div>
       </div>
 
-      {sortedMessages.map((chat) => (
+      {filteredUsers.map((chat) => (
         <div
           className={`flex mb-8 items-center gap-5 cursor-pointer hover:bg-base-200 p-2 rounded-lg transition-colors duration-200 ${
             chatId === chat.chatId ? "bg-base-200" : ""
