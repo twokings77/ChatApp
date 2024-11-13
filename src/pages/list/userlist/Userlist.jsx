@@ -157,7 +157,7 @@ const Userlist = () => {
         <div
           className={`flex mb-8 items-center gap-5 cursor-pointer hover:bg-base-200 p-2 rounded-lg transition-colors duration-200 ${
             chatId === chat.chatId ? "bg-base-200" : ""
-          } ${chat.lastMessage.senderId !== currentUser.id && chat.status === "delivered" && !chat.read ? "bg-zinc-400	" : "bg-transparent"}`}
+          } ${chat.lastMessage.senderId !== currentUser.id && chat.status === "delivered" && !chat.read ? "bg-neutral-600" : "bg-transparent"}`}
           key={chat.chatId} // Using chatId as the unique key
           onClick={() => handleSelect(chat)}
         >
@@ -177,7 +177,7 @@ const Userlist = () => {
               <span className="font-medium">{chat.user.username || "Jane Doe"}</span>
               {chat.updatedAt && (
                 <span className="text-xs text-gray-500">
-                  {new Date(chat.updatedAt).toLocaleDateString()}
+                  {chat.updatedAt.toDate().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}
                 </span>
               )}
             </div>

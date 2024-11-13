@@ -64,7 +64,11 @@ const Chatcenter = () => {
               <img src={message.imgUrl} alt="Sent Image" className="max-w-xs rounded-lg mb-2" />
             )}
             {message.text && <p className="text-sm">{message.text}</p>}
-            <time className="text-xs opacity-50 ml-auto">{message.time}</time>
+            <time className="text-xs opacity-50 ml-auto">
+              {message.timestamp ? 
+                new Date(message.timestamp.seconds * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }) 
+                : "Unknown time"}
+            </time>
           </div>
           {message.sender === currentUserId && (
             <div className="chat-footer opacity-50">

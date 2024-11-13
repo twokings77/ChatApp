@@ -26,7 +26,7 @@ const Chatbottom = () => {
         text: message.trim(),
         sender: currentUser.id,
         avatar: currentUser.avatar,
-        time: formattedTime,
+        timestamp: timestamp,
         type: "text",
         status: "delivered",
       };
