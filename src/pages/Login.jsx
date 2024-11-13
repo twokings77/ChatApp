@@ -145,8 +145,8 @@ const Login = () => {
                       className="w-24 h-24 rounded-full object-cover"
                     />
                   ) : (
-                    <div className=" placeholder flex items-center justify-center">
-                      <div className="bg-neutral text-neutral-content w-24 h-24 rounded-full flex items-center justify-center"></div>
+                    <div className=" placeholder flex items-center w-16 h-16 justify-center">
+                      <div className="bg-neutral text-neutral-content w-16 h-16 rounded-full flex items-center justify-center"></div>
                     </div>
                   )}
                   <input

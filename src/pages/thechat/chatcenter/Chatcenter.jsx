@@ -39,6 +39,8 @@ const Chatcenter = () => {
 
   if (loading) return <p>Loading messages...</p>;
 
+  if (!chatId) return <p>Select a chat to start messaging...</p>;
+
   const currentUserId = currentUser ? currentUser.id : null;
 
   console.log("Messages:", messages);

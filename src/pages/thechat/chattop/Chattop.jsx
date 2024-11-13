@@ -4,7 +4,7 @@ import { IoCallOutline } from "react-icons/io5";
 import { IoVideocamOutline } from "react-icons/io5";
 import { IoEllipsisHorizontalOutline } from "react-icons/io5";
 
-const Chattop = () => {
+const Chattop = ({ user }) => {
   const [showDropdown, setShowDropdown] = useState(false); // State for dropdown visibility
 
   const toggleDropdown = () => {
@@ -17,15 +17,15 @@ const Chattop = () => {
         <div className="avatar online">
           <div className="w-10 h-10 flex items-center justify-center rounded-full overflow-hidden">
             <img 
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" 
+              src={user?.avatar || "default-avatar-url"}
               alt="Avatar" 
               className="object-cover w-full h-full"
             />
           </div>
         </div>
         <div className="texts">
-          <span>Jane Doe</span>
-          <p className="text-xs">Lorem, ipsum.</p>
+          <span className="userName">{user?.username || "Unknown User"}</span>
+          <p className="text-xs status">{user?.status || "Offline"}</p>
         </div>
       </div>
       <div className="inchatCallOptions flex items-center space-x-4">

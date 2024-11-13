@@ -1,4 +1,3 @@
-
 .messageOwn{
     margin-left: 30%;
 }
@@ -8,5 +7,12 @@
       margin-left: 20%; /* Or any other margin value you prefer */
     }
   }
+
+.chatCenter {
+    flex: 1; /* Allow the chat center to grow and fill available space */
+    overflow-y: auto; /* Enable scrolling if messages exceed the viewable area */
+    display: flex;
+    flex-direction: column-reverse; /* Reverse the order of messages to show the latest at the bottom */
+}
 
   

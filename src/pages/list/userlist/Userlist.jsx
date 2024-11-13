@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import "./userlist.css";
 import Useradd from "../useradd/Useradd";
-import { IoAddOutline } from "react-icons/io5";
+import { IoCreateOutline } from "react-icons/io5";
 import { db } from "../../../library/firebase";
 import { useUserStore } from "../../../library/userStore";
 import {
@@ -39,6 +39,8 @@ const Userlist = () => {
           user: userData,
           lastMessage: item.lastMessage || "",
           updatedAt: item.updatedAt || Date.now(), // Fallback for updatedAt if missing
+          read: item.read || false, // Add read status
+          status: item.status || "delivered", // Add status
         };
       });
 
@@ -64,6 +66,15 @@ const Userlist = () => {
 
   const handleSelect = async (chat) => {
     changeChat(chat.chatId, chat.user);
+    
+    // Mark messages as read when the chat is selected
+    await updateDoc(doc(db, "userchats", currentUser.id), {
+      chats: arrayUnion({
+        ...chat,
+        read: true, // Mark as read
+        status: "seen", // Update status to seen
+      }),
+    });
   };
 
   const toggleAddMode = () => {
@@ -138,7 +149,7 @@ const Userlist = () => {
           onClick={toggleAddMode}
           className="hover:text-primary cursor-pointer transition-colors duration-200"
         >
-          <IoAddOutline size={20} />
+          <IoCreateOutline size={20}  />
         </div>
       </div>
 
@@ -146,7 +157,7 @@ const Userlist = () => {
         <div
           className={`flex mb-8 items-center gap-5 cursor-pointer hover:bg-base-200 p-2 rounded-lg transition-colors duration-200 ${
             chatId === chat.chatId ? "bg-base-200" : ""
-          }`}
+          } ${chat.lastMessage.senderId !== currentUser.id && chat.status === "delivered" && !chat.read ? "bg-zinc-400	" : "bg-transparent"}`}
           key={chat.chatId} // Using chatId as the unique key
           onClick={() => handleSelect(chat)}
         >

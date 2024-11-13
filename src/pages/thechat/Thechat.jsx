@@ -3,10 +3,11 @@ import Chattop from "./chattop/Chattop";
 import Chatbottom from "./chatbottom/Chatbottom";
 import Chatcenter from "./chatcenter/Chatcenter";
 import { useState } from "react";
-
+import { useChatStore } from "../../library/chatStore";
 
 const Thechat = () => {
   const [messages, setMessages] = useState([]);
+  const { user } = useChatStore();
 
   const handleSendMessage = (message) => {
     const newMessage = {
@@ -20,7 +21,7 @@ const Thechat = () => {
 
   return (
     <div className="theChat">
-       <Chattop/>
+       <Chattop user={user} />
        <Chatcenter messages={messages} />
        <Chatbottom onSendMessage={handleSendMessage} />
     </div>

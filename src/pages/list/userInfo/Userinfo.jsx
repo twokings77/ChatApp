@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import "./userinfo.css";
 import {
   IoFilterOutline,
-  IoCreateOutline,
   IoEllipsisHorizontalOutline,
 } from "react-icons/io5";
 import { useUserStore } from "../../../library/userStore";
 import { auth } from "../../../library/firebase";
+
 
 const Userinfo = () => {
   const { currentUser } = useUserStore();
@@ -80,9 +80,9 @@ const Userinfo = () => {
         <div className="actionIcons text-3xl md:text-2xl sm:text-xl">
           <IoFilterOutline size={15} />
         </div>
-        <div className="actionIcons text-3xl md:text-2xl sm:text-xl">
-          <IoCreateOutline size={15} />
-        </div>
+        {/* <div className="actionIcons text-3xl md:text-2xl sm:text-xl">
+          <IoCreateOutline size={15}  />
+        </div> */}
       </div>
     </div>
   );

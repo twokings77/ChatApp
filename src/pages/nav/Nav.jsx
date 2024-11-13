@@ -1,4 +1,6 @@
 import "./nav.css";
+import { IoCalendarOutline, IoChatbubblesOutline,IoCallOutline,IoSettingsOutline } from "react-icons/io5";
+
 
 const Nav = () => {
   return (
@@ -6,20 +8,18 @@ const Nav = () => {
       <div className="nav-content">
         <div className="navItem">
           {" "}
-          <img className="navIcons" src="/calendar.svg" alt="calendar Icon" />
+          {/* <img className="navIcons cursor-pointer hover:bg-base-200" src="/calendar.svg" alt="calendar Icon" /> */}
+          <IoCalendarOutline className="navIcons cursor-pointer hover:bg-base-200 rounded-lg 	" size={40} />
           <span className="icon-label">Calendar</span>
         </div>
         <div className="navItem">
-          <img
-            className="navIcons"
-            src="/chatbubble.svg"
-            alt="Chat Bubble Icon"
-          />
+        <IoChatbubblesOutline className="navIcons cursor-pointer hover:bg-base-200 rounded-lg 	" size={40} />
+
           <span className="icon-label">Chat</span>
         </div>
         <div className="navItem">
           {" "}
-          <img className="navIcons" src="/calls.svg" alt="calls Icon" />
+          <IoCallOutline className="navIcons cursor-pointer hover:bg-base-200 rounded-lg 	" size={40} />
           <span className="icon-label">Calls</span>
         </div>
         <div className="navItem">
@@ -30,7 +30,7 @@ const Nav = () => {
             stroke-width="1.5"
             stroke="currentColor"
             class="size-30"
-            className="navIcons"
+            className="navIcons cursor-pointer hover:bg-base-200 rounded-lg"
           >
             <path
               stroke-linecap="round"
@@ -42,7 +42,7 @@ const Nav = () => {
         </div>
         <div className="navItem">
           {" "}
-          <img className="navIcons" src="/settings.svg" alt="settings Icon" />
+          <IoSettingsOutline className="navIcons cursor-pointer hover:bg-base-200 rounded-lg 	" size={40} />
           <span className="icon-label">Settings</span>
         </div>
       </div>

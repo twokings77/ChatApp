@@ -2,3 +2,9 @@
     flex: 1;
 }
 
+@media (min-width: 768px) {
+    .chatDetails {
+      display: none; /* Hide chat details on smaller screens */
+    }
+  }
+

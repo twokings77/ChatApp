@@ -38,14 +38,27 @@ const Chatbottom = () => {
           text: newMessage.text,
           senderId: currentUser.id,
           date: timestamp,
+          status: "delivered",
         },
       });
   
-      const userChatsUpdate = {
+      // Update userChats for both sender and receiver
+      const userChatsUpdateSender = {
         chatId,
         lastMessage: newMessage.text,
         updatedAt: timestamp,
         receiverId: user.id,
+        read: true,
+        status: "sent",
+      };
+  
+      const userChatsUpdateReceiver = {
+        chatId,
+        lastMessage: newMessage.text,
+        updatedAt: timestamp,
+        receiverId: currentUser.id,
+        read: false,
+        status: "delivered",
       };
   
       // Update or merge chat in the `userchats` document for both users
@@ -53,13 +66,14 @@ const Chatbottom = () => {
       for (const id of userIDs) {
         const userChatsRef = doc(db, "userchats", id);
         await updateDoc(userChatsRef, {
-          chats: arrayUnion(userChatsUpdate),
+          chats: arrayUnion(id === currentUser.id ? userChatsUpdateSender : userChatsUpdateReceiver),
         });
       }
   
       setMessage("");
     } catch (error) {
       console.error("Error sending message:", error);
+      alert("Failed to send message. Please try again.");
     }
   };
 
@@ -80,6 +94,7 @@ const Chatbottom = () => {
         messages: arrayUnion({
           id: messageId, // Replace with actual message ID
           status: "seen", // Update status to seen
+          read: true, // Mark as read
         }),
       });
     } catch (error) {

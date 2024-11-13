@@ -16,6 +16,7 @@
   height: 30px;
   width: 30px;
   cursor: pointer;
+  padding: 2px;
 }
 .icon-label {
   margin-top: 5px; 
