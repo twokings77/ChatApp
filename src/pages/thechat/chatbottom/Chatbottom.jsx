@@ -2,26 +2,36 @@ import "./chatbottom.css";
 import { IoAddOutline, IoSendOutline } from "react-icons/io5";
 import EmojiPicker from "emoji-picker-react";
 import { useState, useEffect, useRef } from "react";
-import { db } from "../../../library/firebase";
+import { db, storage } from "../../../library/firebase";
 import { updateDoc, doc, arrayUnion, Timestamp } from "firebase/firestore";
 import { useUserStore } from "../../../library/userStore";
 import { useChatStore } from "../../../library/chatStore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const Chatbottom = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
+  const [image, setImage] = useState(null);
   const emojiRef = useRef(null);
   const { chatId, user } = useChatStore();
   const { currentUser } = useUserStore();
 
+  const handleImageChange = (event) => {
+    if (event.target.files[0]) {
+      setImage(event.target.files[0]);
+    }
+  };
+
+  const handleImageIconClick = () => {
+    document.getElementById("imageInput").click();
+  };
+
   const sendMessage = async () => {
-    if (!message.trim() || !chatId) return;
+    if (!message.trim() && !image) return;
   
     try {
       const timestamp = Timestamp.now();
-      const formattedTime = timestamp.toDate().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  
-      const newMessage = {
+      let newMessage = {
         id: Date.now(),
         text: message.trim(),
         sender: currentUser.id,
@@ -31,11 +41,23 @@ const Chatbottom = () => {
         status: "delivered",
       };
   
+      if (image) {
+        const imageRef = ref(storage, `images/${image.name}`);
+        await uploadBytes(imageRef, image);
+        const imageUrl = await getDownloadURL(imageRef);
+        newMessage = {
+          ...newMessage,
+          type: "image",
+          imgUrl: imageUrl,
+        };
+        setImage(null);
+      }
+  
       const chatRef = doc(db, "chats", chatId);
       await updateDoc(chatRef, {
         messages: arrayUnion(newMessage),
         lastMessage: {
-          text: newMessage.text,
+          text: newMessage.text || "Image sent",
           senderId: currentUser.id,
           date: timestamp,
           status: "delivered",
@@ -146,7 +168,17 @@ const Chatbottom = () => {
           <IoSendOutline size={20} />
         </div>
 
-        <IoAddOutline size={20} />
+        <div onClick={handleImageIconClick} className="addImage cursor-pointer">
+          <IoAddOutline size={20} />
+        </div>
+
+        <input
+          id="imageInput"
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          style={{ display: "none" }}
+        />
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ import {
   getDoc,
   updateDoc,
   arrayUnion,
+  Timestamp,
 } from "firebase/firestore";
 import { useChatStore } from "../../../library/chatStore";
 
@@ -174,10 +175,13 @@ const Userlist = () => {
           </div>
           <div className="texts flex-1">
             <div className="flex justify-between items-center">
-              <span className="font-medium">{chat.user.username || "Jane Doe"}</span>
+              <span className="font-medium">{chat.user.username.charAt(0).toUpperCase() + chat.user.username.slice(1) || "Jane Doe"}</span>
               {chat.updatedAt && (
                 <span className="text-xs text-gray-500">
-                  {chat.updatedAt.toDate().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}
+                  {chat.updatedAt instanceof Timestamp
+                    ? chat.updatedAt.toDate().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })
+                    : new Date(chat.updatedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })
+                  }
                 </span>
               )}
             </div>
