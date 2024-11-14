@@ -15,3 +15,9 @@
     cursor: pointer;
 
 } */
+
+
+.newMessage:hover {
+    transform: scale(1.2); /* Slightly enlarge icon on hover */
+    transition: transform 0.2s; /* Smooth transition */
+  }

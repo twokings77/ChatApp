@@ -148,7 +148,7 @@ const Userlist = () => {
         </label>
         <div
           onClick={toggleAddMode}
-          className="hover:text-primary cursor-pointer transition-colors duration-200"
+          className="newMessage hover:bg-base-200 rounded-lg cursor-pointer transition-colors duration-200"
         >
           <IoCreateOutline size={20}  />
         </div>

@@ -2,3 +2,8 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.132);
 
 }
+
+.chatTopIcons:hover {
+    transform: scale(1.2); /* Slightly enlarge icon on hover */
+    transition: transform 0.2s; /* Smooth transition */
+  }

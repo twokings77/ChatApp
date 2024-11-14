@@ -57,7 +57,7 @@ const Chatbottom = () => {
       await updateDoc(chatRef, {
         messages: arrayUnion(newMessage),
         lastMessage: {
-          text: newMessage.text || "Image sent",
+          text: newMessage.text || "Image",
           senderId: currentUser.id,
           date: timestamp,
           status: "delivered",
@@ -67,7 +67,7 @@ const Chatbottom = () => {
       // Update userChats for both sender and receiver
       const userChatsUpdateSender = {
         chatId,
-        lastMessage: newMessage.text,
+        lastMessage: newMessage.text || "Image",
         updatedAt: timestamp,
         receiverId: user.id,
         read: true,
@@ -76,7 +76,7 @@ const Chatbottom = () => {
   
       const userChatsUpdateReceiver = {
         chatId,
-        lastMessage: newMessage.text,
+        lastMessage: newMessage.text || "Image ",
         updatedAt: timestamp,
         receiverId: currentUser.id,
         read: false,

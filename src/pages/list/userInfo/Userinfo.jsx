@@ -65,18 +65,18 @@ const Userinfo = () => {
                     className="actionIcons text-3xl md:text-2xl sm:text-xl relative"
                     ref={dropdownRef}
                 >
-                    <IoEllipsisHorizontalOutline size={15} onClick={toggleDropdown} />
+                    <IoEllipsisHorizontalOutline className="userInfoIcons cursor-pointer hover:bg-base-200 rounded-lg" size={20} onClick={toggleDropdown} />
                     {/* Dropdown Menu */}
                     {showDropdown && (
                         <div className="dropdownMenu absolute left-0 mt-2 w-32 shadow-md rounded-md z-10">
                             <ul className="flex flex-col menu dropdown-content bg-base-100 rounded-box z-[1] w-51 p-2 shadow">
-                                <li className="p-2 hover:bg-primary cursor-pointer">
+                                <li className="p-2 hover:bg-neutral-600 cursor-pointer rounded-lg">
                                     Action 1
                                 </li>
-                                <li className="p-2 hover:bg-primary cursor-pointer">
+                                <li className="p-2 hover:bg-neutral-600 cursor-pointer rounded-lg">
                                     Action 2
                                 </li>
-                                <li className="p-2 hover:bg-primary cursor-pointer text-orange-600" onClick={()=>auth.signOut()}>
+                                <li className="p-2 hover:bg-neutral-600 cursor-pointer rounded-lg text-orange-600" onClick={()=>auth.signOut()}>
                                     Log out
                                 </li>
                             </ul>
@@ -84,7 +84,7 @@ const Userinfo = () => {
                     )}
                 </div>
                 <div className="actionIcons text-3xl md:text-2xl sm:text-xl">
-                    <IoFilterOutline size={15} />
+                    <IoFilterOutline className="userInfoIcons cursor-pointer hover:bg-base-200 rounded-lg" size={20} />
                 </div>
             </div>
         </div>

@@ -36,25 +36,25 @@ const Chattop = ({ user }) => {
             </div>
             <div className="inchatCallOptions flex items-center space-x-4">
                 <div className="actionIcons text-3xl">
-                    <IoCallOutline size={20} />
+                    <IoCallOutline className="chatTopIcons cursor-pointer hover:bg-base-200 rounded-lg " size={20} />
                 </div>
                 <div className="actionIcons text-3xl">
-                    <IoVideocamOutline size={20} />
+                    <IoVideocamOutline className="chatTopIcons cursor-pointer hover:bg-base-200 rounded-lg " size={20} />
                 </div>
                 <div className="relative"> {/* Added relative position for dropdown positioning */}
-                    <IoEllipsisHorizontalOutline size={20} onClick={toggleDropdown} />
+                    <IoEllipsisHorizontalOutline className="chatTopIcons cursor-pointer hover:bg-base-200 rounded-lg " size={20} onClick={toggleDropdown} />
                     {/* Dropdown Menu */}
                     {showDropdown && (
                         <div className="dropdownMenu absolute left-0 mt-2 w-32 shadow-md rounded-md z-10">
                             <ul className="flex flex-col menu dropdown-content bg-base-100 rounded-box z-[1] w-51 p-2 shadow">
-                                <li className="p-2 hover:bg-primary cursor-pointer">
+                                <li className="p-2 hover:bg-neutral-600 rounded-lg cursor-pointer">
                                     Action 1
                                 </li>
-                                <li className="p-2 hover:bg-primary cursor-pointer">
+                                <li className="p-2 hover:bg-neutral-600 rounded-lg cursor-pointer">
                                     Action 2
                                 </li>
                                 <li 
-                                    className="p-2 hover:bg-primary cursor-pointer text-orange-600" 
+                                    className="p-2 hover:bg-neutral-600 rounded-lg cursor-pointer text-orange-600" 
                                 >
                                     Block user
                                 </li>
