@@ -47,7 +47,7 @@ const Chatdetails = () => {
             <span className="text-3xl">D</span>
           </div>
         </div>
-        <h1>John Doe</h1>
+        <h1 className="name">John Doe</h1>
         <p>User Description</p>
         <div className="flex gap-4">
           <div
@@ -76,7 +76,7 @@ const Chatdetails = () => {
             className="title flex items-center justify-between p-2 mb-4"
             style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.132)" }}
           >
-            <span>In this chat</span>
+            <span>Search files</span>
             {/* Search Icon - Toggle search input */}
             <IoSearchOutline
               size={20}
@@ -129,6 +129,7 @@ const Chatdetails = () => {
                 <a role="tab" className="tab">
                   Docs
                 </a>
+                <div className="itemsInShared "></div>
               </div>
             </div>
           )}
